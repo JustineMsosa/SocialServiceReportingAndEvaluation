@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SocialServiceReportingAndEvaluation</string>
+    <string-array name="subject">
+        <item>Child abuse</item>
+        <item>Gender based violence</item>
+        <item>Child labor</item>
+        <item>Child marriages</item>
+    </string-array>
 </resources>
