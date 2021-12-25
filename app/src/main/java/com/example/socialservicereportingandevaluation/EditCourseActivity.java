@@ -53,10 +53,10 @@ public class EditCourseActivity extends AppCompatActivity {
         if (courseRVModal != null) {
             // on below line we are setting data to our edit text from our modal class.
             nameEdt.setText(courseRVModal.getName());
-            locationEdt.setText(courseRVModal.getContact());
-            contactEdt.setText(courseRVModal.getLocation());
-            emailEdt.setText(courseRVModal.getDate());
-            dateEdt.setText(courseRVModal.getEmail());
+            locationEdt.setText(courseRVModal.getLocation());
+            contactEdt.setText(courseRVModal.getContact());
+            emailEdt.setText(courseRVModal.getEmail());
+            dateEdt.setText(courseRVModal.getDate());
             issueDescEdt.setText(courseRVModal.getIssueDescription());
             issueID = courseRVModal.getIssueId();
             subject = courseRVModal.getSubject();

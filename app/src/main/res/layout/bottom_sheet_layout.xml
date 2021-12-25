@@ -21,14 +21,17 @@
 
     <!--image view for displaying course image-->
     <ImageView
-        android:id="@+id/idIVCourse"
+        android:id="@+id/idIVIssue"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@id/idTVCourseName"
         android:layout_centerVertical="true"
-        android:layout_margin="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:padding="4dp"
-        android:src="@drawable/ic_launcher_background" />
+        android:background="@color/light_blue_shade" />
 
     <!--text view for displaying course description-->
     <TextView
@@ -37,8 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idTVCourseName"
         android:layout_margin="4dp"
-        android:layout_toEndOf="@id/idIVCourse"
-        android:layout_toRightOf="@id/idIVCourse"
+        android:layout_toEndOf="@id/idIVIssue"
+        android:layout_toRightOf="@id/idIVIssue"
         android:padding="3dp"
         android:text="Description"
         android:textColor="@color/white" />
@@ -50,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idTVCourseDesc"
         android:layout_margin="4dp"
-        android:layout_toRightOf="@id/idIVCourse"
+        android:layout_toRightOf="@id/idIVIssue"
         android:padding="3dp"
         android:text="Suited for"
         android:textColor="@color/white" />
@@ -65,7 +68,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:layout_toRightOf="@id/idIVCourse"
+        android:layout_toRightOf="@id/idIVIssue"
         android:padding="3dp"
         android:text="Contact"
         android:textColor="@color/white"

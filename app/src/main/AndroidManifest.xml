@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.socialservicereportingandevaluation">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -12,20 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialServiceReportingAndEvaluation">
         <activity
-            android:name=".Home"
-            android:label="Your Social Issues"
+            android:name=".IssueDetails"
+            android:label="Issue Details"
             android:exported="false" />
         <activity
+            android:name=".Home"
+            android:exported="false"
+            android:label="Your Social Issues" />
+        <activity
             android:name=".Report"
-            android:label="Add Report"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Add Report" />
         <activity
             android:name=".EditCourseActivity"
             android:label="Edit Course" />
         <activity
             android:name=".MainActivity"
-            android:label="Social Issues Reporting"
-            android:exported="true">
+            android:exported="true"
+            android:label="Social Issues Reporting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

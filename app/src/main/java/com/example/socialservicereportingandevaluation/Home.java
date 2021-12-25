@@ -1,7 +1,6 @@
 package com.example.socialservicereportingandevaluation;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -185,11 +184,11 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         TextView courseDescTV = layout.findViewById(R.id.idTVCourseDesc);
         TextView suitedForTV = layout.findViewById(R.id.idTVSuitedFor);
         TextView priceTV = layout.findViewById(R.id.idTVCoursePrice);
-        ImageView courseIV = layout.findViewById(R.id.idIVCourse);
+        ImageView courseIV = layout.findViewById(R.id.idIVIssue);
         // on below line we are setting data to different views on below line.
-        nameTV.setText("Name "+modal.getName());
+        nameTV.setText("Name: "+modal.getName());
         courseDescTV.setText(modal.getIssueDescription());
-        suitedForTV.setText("location: " + modal.getLocation());
+        suitedForTV.setText("Location: " + modal.getLocation());
         priceTV.setText("Contact: " + modal.getContact());
 //        Picasso.get().load(modal.getCourseImg()).into(courseIV);
         Button viewBtn = layout.findViewById(R.id.idBtnVIewDetails);
@@ -216,6 +215,9 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
 //                i.setData(Uri.parse(modal.getEmail()));
 //                startActivity(i);
                 Toast.makeText(Home.this, "All issues Issue..", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Home.this, IssueDetails.class);
+                intent.putExtra("issues", modal);
+                startActivity(intent);
 
             }
         });

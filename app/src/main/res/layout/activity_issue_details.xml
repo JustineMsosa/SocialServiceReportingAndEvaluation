@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idRLBSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
+    android:padding="5dp">
+
+    <!--text view for displaying course name-->
+    <TextView
+        android:id="@+id/idTVName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        android:text="name"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <!--text view for displaying course description-->
+    <TextView
+        android:id="@+id/idTVIssueDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/idTVContact"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        android:text="Issue Description"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <!--text view for displaying course best suited for-->
+    <TextView
+        android:id="@+id/idTVLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVSubject"
+        android:layout_margin="4dp"
+        android:padding="3dp"
+        android:text="Location"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+
+    <!--text view for displaying course price-->
+    <TextView
+        android:id="@+id/idTVContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVLocation"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="3dp"
+        android:text="Contact"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idTVSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVName"
+        android:layout_margin="4dp"
+        android:padding="3dp"
+        android:text="Subject"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/idTVSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/idTVIssueDesc"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        android:text="Source"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idTVPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/idTVSource"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        android:text="Priority"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idTVEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/idTVPriority"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idTVDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/idTVEmail"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        android:text="Date"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVDate"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!--button for editing course-->
+        <Button
+            android:id="@+id/idBtnEditCourse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:text="Close Issue"
+            android:textAllCaps="false" />
+
+        <!--button for viewing course details-->
+        <Button
+            android:id="@+id/idBtnVIewDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:text="Contact"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</RelativeLayout>

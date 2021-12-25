@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black_shade_1">
+        android:background="@color/light_blue_shade">
 
         <!--image view for our course-->
 
@@ -21,9 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="230dp"
             android:scaleType="centerCrop"
-            android:text="Pending"
+            android:text="PENDING"
             android:textColor="@color/white" />
 
         <TextView
