@@ -28,8 +28,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter full name"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColor="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtName"
@@ -38,8 +38,9 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,9 +54,9 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter Contact"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/white">
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtIssueLocation"
@@ -63,9 +64,9 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:inputType="phone"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp"
                     app:boxStrokeColor="@color/purple_200" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,8 +81,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter location"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtContact"
@@ -90,8 +91,9 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,8 +108,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter date"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtEmail"
@@ -115,9 +117,10 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="datetime"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:inputType="date"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,19 +134,21 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter email"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
-                    style="@style/TextAppearance.AppCompat.Widget.DropDownItem"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+
                     android:importantForAutofill="no"
-                    android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,8 +162,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter subject"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <AutoCompleteTextView
                     android:id="@+id/idSubject"
@@ -167,28 +172,35 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="none"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/idTILIssuePriority"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hello"
-                >
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Enter Priority"
+                android:padding="5dp"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
-                <EditText
-                    android:id="@+id/editText"
+                <AutoCompleteTextView
+                    android:id="@+id/idPriority"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
+                    android:layout_height="match_parent"
+                    android:ems="10"
                     android:importantForAutofill="no"
-                    />
-
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -201,8 +213,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter Issue Description"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtCourseDescription"
@@ -211,8 +223,9 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    app:boxStrokeColor="@color/purple_200"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 

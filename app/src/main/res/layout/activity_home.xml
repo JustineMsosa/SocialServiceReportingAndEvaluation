@@ -37,6 +37,6 @@
         android:src="@drawable/ic_baseline_add_24"
         app:background="@color/black_shade_1"
         app:backgroundTint="@color/black_shade_2"
-        app:tint="@color/white" />
+        app:tint="@color/black" />
 
 </RelativeLayout>

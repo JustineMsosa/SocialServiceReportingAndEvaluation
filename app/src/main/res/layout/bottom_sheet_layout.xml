@@ -15,7 +15,7 @@
         android:layout_margin="3dp"
         android:padding="4dp"
         android:text="name"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -30,8 +30,8 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:padding="4dp"
-        android:background="@color/light_blue_shade" />
+        android:background="@color/light_blue_shade"
+        android:padding="4dp" />
 
     <!--text view for displaying course description-->
     <TextView
@@ -44,7 +44,7 @@
         android:layout_toRightOf="@id/idIVIssue"
         android:padding="3dp"
         android:text="Description"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
     <!--text view for displaying course best suited for-->
     <TextView
@@ -56,7 +56,7 @@
         android:layout_toRightOf="@id/idIVIssue"
         android:padding="3dp"
         android:text="Suited for"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
     <!--text view for displaying course price-->
     <TextView
@@ -71,7 +71,7 @@
         android:layout_toRightOf="@id/idIVIssue"
         android:padding="3dp"
         android:text="Contact"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
 

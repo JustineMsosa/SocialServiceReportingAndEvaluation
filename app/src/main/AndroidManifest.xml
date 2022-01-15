@@ -14,18 +14,22 @@
         android:theme="@style/Theme.SocialServiceReportingAndEvaluation">
         <activity
             android:name=".IssueDetails"
+            android:parentActivityName=".Home"
             android:label="Issue Details"
             android:exported="false" />
         <activity
             android:name=".Home"
             android:exported="false"
+            android:parentActivityName=".IssueDetails"
             android:label="Your Social Issues" />
         <activity
             android:name=".Report"
             android:exported="false"
+            android:parentActivityName=".Home"
             android:label="Add Report" />
         <activity
             android:name=".EditCourseActivity"
+            android:parentActivityName=".Report"
             android:label="Edit Course" />
         <activity
             android:name=".MainActivity"
@@ -37,6 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

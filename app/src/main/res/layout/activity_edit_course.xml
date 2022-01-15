@@ -28,8 +28,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter full Name"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtName"
@@ -38,8 +38,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,9 +54,9 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter contact"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/white">
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtIssueLocation"
@@ -65,8 +65,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="text"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp"
                     app:boxStrokeColor="@color/purple_200" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -82,8 +82,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter location"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtContact"
@@ -92,8 +92,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,8 +108,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter date"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtEmail"
@@ -118,8 +118,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,8 +134,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter email"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtDate"
@@ -144,8 +144,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -161,8 +161,8 @@
                 android:layout_marginRight="10dp"
                 android:hint="Enter Issue Description"
                 android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white">
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtCourseDescription"
@@ -171,8 +171,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 

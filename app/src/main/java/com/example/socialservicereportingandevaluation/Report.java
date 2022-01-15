@@ -3,6 +3,8 @@ package com.example.socialservicereportingandevaluation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -29,6 +31,14 @@ public class Report extends AppCompatActivity {
     DatabaseReference databaseReference;
     private ProgressBar loadingPB;
     private String issueID, issueID1, subject, priority, source;
+    String[] sub = {"Child abuse", "Gender based violence","Child labor","Child marriages"};
+    String[] prio = {"Low","Medium","High"};
+
+    AutoCompleteTextView autoCompleteTextView;
+    AutoCompleteTextView autoCompleteTextView1;
+
+    ArrayAdapter<String> adapterItems;
+    ArrayAdapter<String> adapterItems1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +55,18 @@ public class Report extends AppCompatActivity {
         loadingPB = findViewById(R.id.idPBLoading);
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line creating our database reference.
+        autoCompleteTextView = findViewById(R.id.idSubject);
+        autoCompleteTextView1 = findViewById(R.id.idPriority);
+
+        adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_item,sub);
+        adapterItems1 = new ArrayAdapter<String>(this,R.layout.dropdown_item,prio);
+
+        autoCompleteTextView.setAdapter(adapterItems);
+        autoCompleteTextView1.setAdapter(adapterItems1);
+
         databaseReference = firebaseDatabase.getReference("issues");
         // adding click listener for our add course button.
+
         addIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
