@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 //import com.squareup.picasso.Picasso;
 
@@ -54,7 +55,10 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         firebaseDatabase = FirebaseDatabase.getInstance();
         issueRVModalArrayList = new ArrayList<>();
         // on below line we are getting database reference.
+//        databaseReference = firebaseDatabase.getReference("issues");
         databaseReference = firebaseDatabase.getReference("issues");
+
+        Query query = databaseReference.orderByChild("source").equalTo("Mobile App");
         // on below line adding a click listener for our floating action button.
         DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
         mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -95,7 +99,8 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         issueRVModalArrayList.clear();
 
         // on below line we are calling add child event listener method to read the data.
-        databaseReference.addChildEventListener(new ChildEventListener() {
+        Query query = databaseReference.orderByChild("source").endAt("Mobile app");
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 // on below line we are hiding our progress bar.

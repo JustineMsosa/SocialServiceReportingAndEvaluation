@@ -30,7 +30,7 @@ public class Report extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private ProgressBar loadingPB;
-    private String issueID, issueID1, subject, priority, source;
+    private String issueID, issueID1, source;
     String[] sub = {"Child abuse", "Gender based violence","Child labor","Child marriages"};
     String[] prio = {"Low","Medium","High"};
 
@@ -78,9 +78,9 @@ public class Report extends AppCompatActivity {
                 String contact = contactEdt.getText().toString();
                 String email = emailEdt.getText().toString();
                 String date = dateEdt.getText().toString();
+                String subject = autoCompleteTextView.getText().toString();
+                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
-                subject = "Gender based violence";
-                priority = "High";
                 source = "Mobile app";
 
                 DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
