@@ -11,15 +11,16 @@ public class CourseRVModal implements Parcelable {
     private String location;
     private String date;
     private String email;
-    private String issueId;
+    private String uid;
     private String subject;
     private String priority;
     private String source;
+    private String state1;
 
-    public String getIssueId(){return issueId;}
+    public String getUid(){return uid;}
 
-    public void setIssueId(String issueId) {
-        this.issueId = issueId;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     // creating an empty constructor.
@@ -29,7 +30,7 @@ public class CourseRVModal implements Parcelable {
 
     protected CourseRVModal(Parcel in) {
         name = in.readString();
-        issueId = in.readString();
+        uid = in.readString();
         issueDescription = in.readString();
         contact = in.readString();
         location = in.readString();
@@ -38,6 +39,7 @@ public class CourseRVModal implements Parcelable {
         subject = in.readString();
         priority = in.readString();
         source = in.readString();
+        state1 = in.readString();
     }
 
     public static final Creator<CourseRVModal> CREATOR = new Creator<CourseRVModal>() {
@@ -53,6 +55,9 @@ public class CourseRVModal implements Parcelable {
     };
 
     // creating getter and setter methods.
+    public String getState1(){return state1; }
+    public void setState1(String state1) {this.state1 = state1; }
+
     public String getSubject(){return subject;}
 
     public void setSubject(String subject) {
@@ -106,11 +111,11 @@ public class CourseRVModal implements Parcelable {
         this.email = email;
     }
 
-    public CourseRVModal(String issueId, String name, String courseDescription, String coursePrice,
+    public CourseRVModal(String uid, String name, String courseDescription, String coursePrice,
                          String bestSuitedFor, String courseImg, String courseLink, String subject,
-                         String priority, String source) {
+                         String priority, String source, String state1) {
         this.name = name;
-        this.issueId = issueId;
+        this.uid = uid;
         this.issueDescription = courseDescription;
         this.contact = coursePrice;
         this.location = bestSuitedFor;
@@ -119,6 +124,7 @@ public class CourseRVModal implements Parcelable {
         this.subject = subject;
         this.priority = priority;
         this.source = source;
+        this.state1 = state1;
     }
 
     @Override
@@ -129,7 +135,7 @@ public class CourseRVModal implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(issueId);
+        dest.writeString(uid);
         dest.writeString(issueDescription);
         dest.writeString(contact);
         dest.writeString(location);
@@ -138,6 +144,7 @@ public class CourseRVModal implements Parcelable {
         dest.writeString(subject);
         dest.writeString(priority);
         dest.writeString(source);
+        dest.writeString(state1);
     }
 }
 

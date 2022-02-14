@@ -59,7 +59,7 @@
                 app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtIssueLocation"
+                    android:id="@+id/idEdtContact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -73,7 +73,7 @@
 
             <!--edit text for adding a course best suited for-->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/idTILCourseSuitedFor"
+                android:id="@+id/idTILIssueLocation"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtContact"
+                    android:id="@+id/idEdtIssueLocation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -112,7 +112,7 @@
                 app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtEmail"
+                    android:id="@+id/idEdtDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -138,7 +138,7 @@
                 app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtDate"
+                    android:id="@+id/idEdtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"

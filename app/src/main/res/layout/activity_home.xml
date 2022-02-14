@@ -39,4 +39,31 @@
         app:backgroundTint="@color/black_shade_2"
         app:tint="@color/black" />
 
+<!--    <TextView-->
+<!--        android:id="@+id/idNoIssue"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="3dp"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:layout_marginEnd="3dp"-->
+<!--        android:layout_marginBottom="3dp"-->
+<!--        android:padding="4dp"-->
+<!--        android:text="No issue found please add one..."-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="17sp"-->
+<!--        android:textStyle="bold" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/idNoInternet"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="3dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:layout_marginEnd="3dp"-->
+<!--        android:layout_marginBottom="3dp"-->
+<!--        android:padding="4dp"-->
+<!--        android:text="Make sure you are connected to internet"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="17sp"-->
+<!--        android:textStyle="bold" />-->
+
 </RelativeLayout>

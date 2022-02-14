@@ -17,20 +17,20 @@
         <!--image view for our course-->
 
         <Button
-            android:id="@+id/idIVImage"
+            android:id="@+id/pending"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="230dp"
             android:scaleType="centerCrop"
-            android:text="PENDING"
+            android:text="pending"
             android:textColor="@color/white" />
 
+        <!--text view for course name-->
         <TextView
             android:id="@+id/idIVSubject"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_centerInParent="true"
             android:paddingLeft="20dp"
             android:scaleType="centerCrop"
             android:text="Subject"
@@ -38,7 +38,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!--text view for course name-->
         <TextView
             android:id="@+id/idTVname"
             android:layout_width="match_parent"

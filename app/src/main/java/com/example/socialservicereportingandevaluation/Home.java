@@ -2,6 +2,7 @@ package com.example.socialservicereportingandevaluation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +43,8 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
     private ArrayList<CourseRVModal> issueRVModalArrayList;
     private CourseRVAdapter issueRVAdapter;
     private RelativeLayout homeRL;
+    private TextView noIssue, noInternet;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         setContentView(R.layout.activity_home);
         // initializing all our variables.
         issueRV = findViewById(R.id.idRVIssues);
+//        noIssue = (TextView) findViewById(R.id.idNoIssue);
+//        noInternet = (TextView) findViewById(R.id.idNoInternet);
+        btn = (Button) findViewById(R.id.pending);
         homeRL = findViewById(R.id.idRLBSheet);
         loadingPB = findViewById(R.id.idPBLoading);
         addIssueFAB = findViewById(R.id.idFABAddCourse);
@@ -57,23 +63,38 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         // on below line we are getting database reference.
 //        databaseReference = firebaseDatabase.getReference("issues");
         databaseReference = firebaseDatabase.getReference("issues");
+//                btn.setText("Open");
+//        loadingPB.setVisibility(View.GONE);
+//        noIssue.setVisibility(View.GONE);
+//        noInternet.setVisibility(View.GONE);
 
-        Query query = databaseReference.orderByChild("source").equalTo("Mobile App");
+//        Runnable runnable = new Runnable() {
+//            public void run () {
+//                // Do your stuff here  -- show your progress bar
+//                loadingPB.setVisibility(View.GONE);
+//                noIssue.setVisibility(View.VISIBLE);
+//                noInternet.setVisibility(View.VISIBLE);
+//            }
+//        };
+//        Handler handler = new Handler();
+//        handler.postDelayed(runnable, 10000);
+
+//        Query query = databaseReference.orderByChild("source").equalTo("Web App");
         // on below line adding a click listener for our floating action button.
         DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-        mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int size = (int) dataSnapshot.getChildrenCount();
-                Toast.makeText(Home.this, "You have "+size+" Issues", Toast.LENGTH_LONG).show();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                int size = (int) dataSnapshot.getChildrenCount();
+//                Toast.makeText(Home.this, "You have "+size+" Issues", Toast.LENGTH_LONG).show();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
 
         addIssueFAB.setOnClickListener(new View.OnClickListener() {
@@ -98,13 +119,15 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         // on below line clearing our list.
         issueRVModalArrayList.clear();
 
+
         // on below line we are calling add child event listener method to read the data.
-        Query query = databaseReference.orderByChild("source").endAt("Mobile app");
+        Query query = databaseReference.orderByChild("source").endAt("Web app");
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 // on below line we are hiding our progress bar.
                 loadingPB.setVisibility(View.GONE);
+//                noIssue.setVisibility(View.GONE);
                 // adding snapshot to our array list on below line.
                 issueRVModalArrayList.add(snapshot.getValue(CourseRVModal.class));
                 // notifying our adapter that data has changed.
@@ -219,7 +242,7 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
 //                Intent i = new Intent(Intent.ACTION_VIEW);
 //                i.setData(Uri.parse(modal.getEmail()));
 //                startActivity(i);
-                Toast.makeText(Home.this, "All issues Issue..", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Home.this, "All issues Issue..", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Home.this, IssueDetails.class);
                 intent.putExtra("issues", modal);
                 startActivity(intent);

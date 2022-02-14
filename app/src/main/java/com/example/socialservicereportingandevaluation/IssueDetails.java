@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,7 +53,7 @@ public class IssueDetails extends AppCompatActivity {
             subject.setText("Subject: "+courseRVModal.getSubject());
             priority.setText("Priority: "+courseRVModal.getPriority());
             source.setText("Source: "+courseRVModal.getSource());
-            issueID = courseRVModal.getIssueId();
+            issueID = courseRVModal.getUid();
 
         }
     }

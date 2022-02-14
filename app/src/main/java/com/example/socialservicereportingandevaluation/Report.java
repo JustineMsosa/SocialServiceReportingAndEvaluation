@@ -29,10 +29,11 @@ public class Report extends AppCompatActivity {
     private TextInputEditText NameEdt, issueDescEdt, locationEdt, contactEdt, emailEdt, dateEdt;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private Button state;
     private ProgressBar loadingPB;
-    private String issueID, issueID1, source;
+    private String issueID, issueID1, source, state1;
     String[] sub = {"Child abuse", "Gender based violence","Child labor","Child marriages"};
-    String[] prio = {"Low","Medium","High"};
+    String priority = "";
 
     AutoCompleteTextView autoCompleteTextView;
     AutoCompleteTextView autoCompleteTextView1;
@@ -53,19 +54,22 @@ public class Report extends AppCompatActivity {
         emailEdt = findViewById(R.id.idEdtEmail);
         dateEdt = findViewById(R.id.idEdtDate);
         loadingPB = findViewById(R.id.idPBLoading);
+        state= (Button) findViewById(R.id.pending);
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line creating our database reference.
         autoCompleteTextView = findViewById(R.id.idSubject);
-        autoCompleteTextView1 = findViewById(R.id.idPriority);
+//        autoCompleteTextView1 = findViewById(R.id.idPriority);
 
         adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_item,sub);
-        adapterItems1 = new ArrayAdapter<String>(this,R.layout.dropdown_item,prio);
+//        adapterItems1 = new ArrayAdapter<String>(this,R.layout.dropdown_item,prio);
 
         autoCompleteTextView.setAdapter(adapterItems);
-        autoCompleteTextView1.setAdapter(adapterItems1);
+//        autoCompleteTextView1.setAdapter(adapterItems1);
 
         databaseReference = firebaseDatabase.getReference("issues");
         // adding click listener for our add course button.
+
+//        addIssueBtn.setText("Open");
 
         addIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,9 +83,10 @@ public class Report extends AppCompatActivity {
                 String email = emailEdt.getText().toString();
                 String date = dateEdt.getText().toString();
                 String subject = autoCompleteTextView.getText().toString();
-                String priority = autoCompleteTextView1.getText().toString();
+//                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
                 source = "Mobile app";
+                state1 = "";
 
                 DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
                 mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -90,7 +95,7 @@ public class Report extends AppCompatActivity {
                         int size = (int) dataSnapshot.getChildrenCount();
                         issueID = ""+size;
                         CourseRVModal courseRVModal = new CourseRVModal(issueID, Name, issueDesc, location,
-                                contact, email, date, subject, priority, source);
+                                contact, email, date, subject, priority, source, state1  );
                         // on below line we are calling a add value event
                         // to pass data to firebase database.
                         databaseReference.addValueEventListener(new ValueEventListener() {

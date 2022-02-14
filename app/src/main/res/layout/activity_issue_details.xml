@@ -146,25 +146,25 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <!--button for editing course-->
-        <Button
-            android:id="@+id/idBtnEditCourse"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            android:text="Close Issue"
-            android:textAllCaps="false" />
+<!--        &lt;!&ndash;button for editing course&ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/idBtnEditCourse"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="6dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Close Issue"-->
+<!--            android:textAllCaps="false" />-->
 
-        <!--button for viewing course details-->
-        <Button
-            android:id="@+id/idBtnVIewDetails"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            android:text="Contact"
-            android:textAllCaps="false" />
+<!--        &lt;!&ndash;button for viewing course details&ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/idBtnVIewDetails"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="6dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Contact"-->
+<!--            android:textAllCaps="false" />-->
 
     </LinearLayout>
 

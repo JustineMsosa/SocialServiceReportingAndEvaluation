@@ -49,6 +49,11 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         holder.courseTV.setText(courseRVModal.getName());
         holder.subjectIV.setText(courseRVModal.getSubject());
         holder.coursePriceTV.setText(courseRVModal.getContact());
+        if (courseRVModal.getPriority()== null){
+            holder.state.setText(courseRVModal.getPriority());
+        }
+
+
 //        Picasso.get().load(courseRVModal.getCourseImg()).into(holder.courseIV);
         // adding animation to recycler view item on below line.
         setAnimation(holder.itemView, position);
@@ -78,8 +83,9 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // creating variable for our image view and text view on below line.
-        private Button imageIV;
+        private Button state;
         private TextView courseTV, coursePriceTV, subjectIV;
+        String state1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +93,12 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
             subjectIV = itemView.findViewById(R.id.idIVSubject);
             courseTV = itemView.findViewById(R.id.idTVname);
             coursePriceTV = itemView.findViewById(R.id.idTVCousePrice);
-            imageIV = itemView.findViewById(R.id.idIVImage);
+            state = itemView.findViewById(R.id.pending);
+//            state1 = CourseRVModal.class.getName();
+
+
+//            state.setText(state1);
+
         }
     }
 

@@ -23,21 +23,21 @@ import java.util.Map;
 public class EditCourseActivity extends AppCompatActivity {
 
     // creating variables for our edit text, firebase database,
-    // database reference, course rv modal,progress bar.
+    // database reference, issue rv modal,progress bar.
     private TextInputEditText nameEdt, issueDescEdt, locationEdt, contactEdt, emailEdt, dateEdt;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     CourseRVModal courseRVModal;
     private ProgressBar loadingPB;
-    // creating a string for our course id.
-    private String issueID, subject, priority;
+    // creating a string for our issue id.
+    private String issueID, subject, priority, source, state1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_course);
         // initializing all our variables on below line.
-        Button addCourseBtn = findViewById(R.id.idBtnAddIssue);
+        Button addIssueBtn = findViewById(R.id.idBtnAddIssue);
         nameEdt = findViewById(R.id.idEdtName);
         issueDescEdt = findViewById(R.id.idEdtCourseDescription);
         locationEdt = findViewById(R.id.idEdtIssueLocation);
@@ -58,23 +58,25 @@ public class EditCourseActivity extends AppCompatActivity {
             emailEdt.setText(courseRVModal.getEmail());
             dateEdt.setText(courseRVModal.getDate());
             issueDescEdt.setText(courseRVModal.getIssueDescription());
-            issueID = courseRVModal.getIssueId();
+            issueID = courseRVModal.getUid();
             subject = courseRVModal.getSubject();
             priority = courseRVModal.getPriority();
+            source = courseRVModal.getSource();
+            state1 = courseRVModal.getState1();
 
         }
 
         // on below line we are initialing our database reference and we are adding a child as our issue id.
         databaseReference = firebaseDatabase.getReference("issues").child(issueID);
         // on below line we are adding click listener for our add course button.
-        addCourseBtn.setOnClickListener(new View.OnClickListener() {
+        addIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // on below line we are making our progress bar as visible.
                 loadingPB.setVisibility(View.VISIBLE);
                 // on below line we are getting data from our edit text.
                 String name = nameEdt.getText().toString();
-                String courseDesc = issueDescEdt.getText().toString();
+                String issueDesc = issueDescEdt.getText().toString();
                 String location = locationEdt.getText().toString();
                 String contact = contactEdt.getText().toString();
                 String email = emailEdt.getText().toString();
@@ -83,27 +85,31 @@ public class EditCourseActivity extends AppCompatActivity {
                 // passing a data using key and value pair.
                 Map<String, Object> map = new HashMap<>();
                 map.put("name", name);
-                map.put("issueDescription", courseDesc);
+                map.put("issueDescription", issueDesc);
                 map.put("location", location);
                 map.put("contact", contact);
                 map.put("email", email);
                 map.put("date", date);
                 map.put("issueId", issueID);
                 map.put("subject", subject);
+                map.put("source", source);
                 map.put("priority", priority);
+                map.put("state1", state1);
 
                 // on below line we are calling a database reference on
                 // add value event listener and on data change method
-                databaseReference.addValueEventListener(new ValueEventListener() {
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                         // making progress bar visibility as gone.
                         loadingPB.setVisibility(View.GONE);
                         // adding a map to our database.
                         databaseReference.updateChildren(map);
                         // on below line we are displaying a toast message.
                         Toast.makeText(EditCourseActivity.this, "Issue Updated..", Toast.LENGTH_SHORT).show();
-                        // opening a new activity after updating our coarse.
+                        // opening a new activity after updating our issue.
+
                         startActivity(new Intent(EditCourseActivity.this, Home.class));
                     }
 
