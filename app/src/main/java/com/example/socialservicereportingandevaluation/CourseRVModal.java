@@ -16,6 +16,14 @@ public class CourseRVModal implements Parcelable {
     private String priority;
     private String source;
     private String state1;
+    private String message;
+    private String openDate;
+    private String resolvedDate;
+    private String repoterMessage;
+    private String assign;
+    private String ta;
+    private String village;
+
 
     public String getUid(){return uid;}
 
@@ -40,6 +48,13 @@ public class CourseRVModal implements Parcelable {
         priority = in.readString();
         source = in.readString();
         state1 = in.readString();
+        message = in.readString();
+        openDate = in.readString();
+        resolvedDate = in.readString();
+        repoterMessage = in.readString();
+        assign = in.readString();
+        ta = in.readString();
+        village = in.readString();
     }
 
     public static final Creator<CourseRVModal> CREATOR = new Creator<CourseRVModal>() {
@@ -55,6 +70,27 @@ public class CourseRVModal implements Parcelable {
     };
 
     // creating getter and setter methods.
+    public String getRepoterMessage(){return repoterMessage; }
+    public void setRepoterMessage(String reporterMessage) {this.repoterMessage = repoterMessage; }
+
+    public String getTa(){return ta; }
+    public void setTa(String ta) {this.ta = ta; }
+
+    public String getAssign(){return assign; }
+    public void setAssign(String reporterMessage) {this.assign = assign; }
+
+    public String getVillage(){return village; }
+    public void setVillage(String village) {this.village = village; }
+
+    public String getResolvedDate(){return resolvedDate; }
+    public void setResolvedDate(String resolvedDate) {this.resolvedDate = resolvedDate; }
+
+    public String getOpenDate(){return openDate; }
+    public void setOpenDate(String openDate) {this.openDate = openDate; }
+
+    public String getMessage(){return message; }
+    public void setMessage(String message) {this.message = message; }
+
     public String getState1(){return state1; }
     public void setState1(String state1) {this.state1 = state1; }
 
@@ -113,7 +149,9 @@ public class CourseRVModal implements Parcelable {
 
     public CourseRVModal(String uid, String name, String courseDescription, String coursePrice,
                          String bestSuitedFor, String courseImg, String courseLink, String subject,
-                         String priority, String source, String state1) {
+                         String priority, String source,
+                         String state1, String message, String openDate, String resolvedDate,
+                         String repoterMessage, String assign, String ta, String village) {
         this.name = name;
         this.uid = uid;
         this.issueDescription = courseDescription;
@@ -125,6 +163,13 @@ public class CourseRVModal implements Parcelable {
         this.priority = priority;
         this.source = source;
         this.state1 = state1;
+        this.message = message;
+        this.openDate = openDate;
+        this.resolvedDate = resolvedDate;
+        this.repoterMessage = repoterMessage;
+        this.assign = assign;
+        this.ta = ta;
+        this.village = village;
     }
 
     @Override
@@ -145,6 +190,14 @@ public class CourseRVModal implements Parcelable {
         dest.writeString(priority);
         dest.writeString(source);
         dest.writeString(state1);
+        dest.writeString(message);
+        dest.writeString(openDate);
+        dest.writeString(resolvedDate);
+        dest.writeString(repoterMessage);
+        dest.writeString(assign);
+        dest.writeString(ta);
+        dest.writeString(village);
+
     }
 }
 

@@ -34,6 +34,13 @@ public class Report extends AppCompatActivity {
     private String issueID, issueID1, source, state1;
     String[] sub = {"Child abuse", "Gender based violence","Child labor","Child marriages"};
     String priority = "";
+    String message = "Your issue will be handled soon";
+    String assign = "reporter";
+    String resolvedDate = "not yet";
+    String repoterMessage = "- ";
+    String openDate = "";
+    String ta, village = "";
+
 
     AutoCompleteTextView autoCompleteTextView;
     AutoCompleteTextView autoCompleteTextView1;
@@ -86,7 +93,7 @@ public class Report extends AppCompatActivity {
 //                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
                 source = "Mobile app";
-                state1 = "";
+                state1 = "pending";
 
                 DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
                 mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -95,7 +102,8 @@ public class Report extends AppCompatActivity {
                         int size = (int) dataSnapshot.getChildrenCount();
                         issueID = ""+size;
                         CourseRVModal courseRVModal = new CourseRVModal(issueID, Name, issueDesc, location,
-                                contact, email, date, subject, priority, source, state1  );
+                                contact, email, date, subject, priority, source, state1,
+                                message, openDate, resolvedDate, repoterMessage, assign, ta, village);
                         // on below line we are calling a add value event
                         // to pass data to firebase database.
                         databaseReference.addValueEventListener(new ValueEventListener() {

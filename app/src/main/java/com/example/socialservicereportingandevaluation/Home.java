@@ -121,7 +121,7 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
 
 
         // on below line we are calling add child event listener method to read the data.
-        Query query = databaseReference.orderByChild("source").endAt("Web app");
+        Query query = databaseReference.orderByChild("source").endAt("Mobile app");
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

@@ -49,9 +49,25 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         holder.courseTV.setText(courseRVModal.getName());
         holder.subjectIV.setText(courseRVModal.getSubject());
         holder.coursePriceTV.setText(courseRVModal.getContact());
-        if (courseRVModal.getPriority()== null){
-            holder.state.setText(courseRVModal.getPriority());
-        }
+        holder.state.setText(courseRVModal.getState1());
+//        if (courseRVModal.getPriority()== null){
+//            holder.state.setText(courseRVModal.getState1());
+//        }
+//        if (courseRVModal.getAssign()== null){
+//            holder.state.setText(courseRVModal.getAssign());
+//        }
+//        if (courseRVModal.getMessage()== null){
+//            holder.state.setText(courseRVModal.getMessage());
+//        }
+//        if (courseRVModal.getOpenDate()== null){
+//            holder.state.setText(courseRVModal.getOpenDate());
+//        }
+//        if (courseRVModal.getRepoterMessage()== null){
+//            holder.state.setText(courseRVModal.getRepoterMessage());
+//        }
+//        if (courseRVModal.getResolvedDate()== null){
+//            holder.state.setText(courseRVModal.getResolvedDate());
+//        }
 
 
 //        Picasso.get().load(courseRVModal.getCourseImg()).into(holder.courseIV);
