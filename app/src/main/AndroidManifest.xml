@@ -28,7 +28,7 @@
             android:parentActivityName=".Home"
             android:label="Add Report" />
         <activity
-            android:name=".EditCourseActivity"
+            android:name=".EditIssueActivity"
             android:parentActivityName=".Report"
             android:label="Edit Course" />
         <activity

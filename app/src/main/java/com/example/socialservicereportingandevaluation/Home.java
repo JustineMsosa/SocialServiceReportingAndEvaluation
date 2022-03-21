@@ -2,7 +2,6 @@ package com.example.socialservicereportingandevaluation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,20 +27,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 //import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity implements CourseRVAdapter.CourseClickInterface {
+public class Home extends AppCompatActivity implements IssueRVAdapter.CourseClickInterface {
 
     private FloatingActionButton addIssueFAB;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private RecyclerView issueRV;
     private ProgressBar loadingPB;
-    private ArrayList<CourseRVModal> issueRVModalArrayList;
-    private CourseRVAdapter issueRVAdapter;
+    private ArrayList<IssueRVModal> issueRVModalArrayList;
+    private IssueRVAdapter issueRVAdapter;
     private RelativeLayout homeRL;
     private TextView noIssue, noInternet;
     Button btn;
@@ -106,7 +104,7 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
             }
         });
         // on below line initializing our adapter class.
-        issueRVAdapter = new CourseRVAdapter(issueRVModalArrayList, this, this::onCourseClick);
+        issueRVAdapter = new IssueRVAdapter(issueRVModalArrayList, this, this::onCourseClick);
         // setting layout malinger to recycler view on below line.
         issueRV.setLayoutManager(new LinearLayoutManager(this));
         // setting adapter to recycler view on below line.
@@ -129,7 +127,7 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
                 loadingPB.setVisibility(View.GONE);
 //                noIssue.setVisibility(View.GONE);
                 // adding snapshot to our array list on below line.
-                issueRVModalArrayList.add(snapshot.getValue(CourseRVModal.class));
+                issueRVModalArrayList.add(snapshot.getValue(IssueRVModal.class));
                 // notifying our adapter that data has changed.
                 issueRVAdapter.notifyDataSetChanged();
             }
@@ -199,7 +197,7 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
         return true;
     }
 
-    private void displayBottomSheet(CourseRVModal modal) {
+    private void displayBottomSheet(IssueRVModal modal) {
         // on below line we are creating our bottom sheet dialog.
         final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(this, R.style.BottomSheetDialogTheme);
         View layout = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_layout, homeRL);
@@ -227,7 +225,7 @@ public class Home extends AppCompatActivity implements CourseRVAdapter.CourseCli
             @Override
             public void onClick(View v) {
                 // on below line we are opening our EditCourseActivity on below line.
-                Intent i = new Intent(Home.this, EditCourseActivity.class);
+                Intent i = new Intent(Home.this, EditIssueActivity.class);
                 // on below line we are passing our course modal
                 i.putExtra("issues", modal);
                 startActivity(i);

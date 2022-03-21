@@ -20,14 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditCourseActivity extends AppCompatActivity {
+public class EditIssueActivity extends AppCompatActivity {
 
     // creating variables for our edit text, firebase database,
     // database reference, issue rv modal,progress bar.
     private TextInputEditText nameEdt, issueDescEdt, locationEdt, contactEdt, emailEdt, dateEdt;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    CourseRVModal courseRVModal;
+    IssueRVModal issueRVModal;
     private ProgressBar loadingPB;
     // creating a string for our issue id.
     private String issueID, subject, priority, source, state1;
@@ -35,7 +35,7 @@ public class EditCourseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_course);
+        setContentView(R.layout.activity_edit_issue);
         // initializing all our variables on below line.
         Button addIssueBtn = findViewById(R.id.idBtnAddIssue);
         nameEdt = findViewById(R.id.idEdtName);
@@ -47,22 +47,22 @@ public class EditCourseActivity extends AppCompatActivity {
         loadingPB = findViewById(R.id.idPBLoading);
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line we are getting our modal class on which we have passed.
-        courseRVModal = getIntent().getParcelableExtra("issues");
+        issueRVModal = getIntent().getParcelableExtra("issues");
         Button deleteCourseBtn = findViewById(R.id.idBtnDeleteCourse);
 
-        if (courseRVModal != null) {
+        if (issueRVModal != null) {
             // on below line we are setting data to our edit text from our modal class.
-            nameEdt.setText(courseRVModal.getName());
-            locationEdt.setText(courseRVModal.getLocation());
-            contactEdt.setText(courseRVModal.getContact());
-            emailEdt.setText(courseRVModal.getEmail());
-            dateEdt.setText(courseRVModal.getDate());
-            issueDescEdt.setText(courseRVModal.getIssueDescription());
-            issueID = courseRVModal.getUid();
-            subject = courseRVModal.getSubject();
-            priority = courseRVModal.getPriority();
-            source = courseRVModal.getSource();
-            state1 = courseRVModal.getState1();
+            nameEdt.setText(issueRVModal.getName());
+            locationEdt.setText(issueRVModal.getLocation());
+            contactEdt.setText(issueRVModal.getContact());
+            emailEdt.setText(issueRVModal.getEmail());
+            dateEdt.setText(issueRVModal.getDate());
+            issueDescEdt.setText(issueRVModal.getIssueDescription());
+            issueID = issueRVModal.getUid();
+            subject = issueRVModal.getSubject();
+            priority = issueRVModal.getPriority();
+            source = issueRVModal.getSource();
+            state1 = issueRVModal.getState1();
 
         }
 
@@ -107,16 +107,16 @@ public class EditCourseActivity extends AppCompatActivity {
                         // adding a map to our database.
                         databaseReference.updateChildren(map);
                         // on below line we are displaying a toast message.
-                        Toast.makeText(EditCourseActivity.this, "Issue Updated..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditIssueActivity.this, "Issue Updated..", Toast.LENGTH_SHORT).show();
                         // opening a new activity after updating our issue.
 
-                        startActivity(new Intent(EditCourseActivity.this, Home.class));
+                        startActivity(new Intent(EditIssueActivity.this, Home.class));
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         // displaying a failure message on toast.
-                        Toast.makeText(EditCourseActivity.this, "Fail to update issue..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditIssueActivity.this, "Fail to update issue..", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -139,6 +139,6 @@ public class EditCourseActivity extends AppCompatActivity {
         // displaying a toast message on below line.
         Toast.makeText(this, "Issue Deleted..", Toast.LENGTH_SHORT).show();
         // opening a main activity on below line.
-        startActivity(new Intent(EditCourseActivity.this, Home.class));
+        startActivity(new Intent(EditIssueActivity.this, Home.class));
     }
 }

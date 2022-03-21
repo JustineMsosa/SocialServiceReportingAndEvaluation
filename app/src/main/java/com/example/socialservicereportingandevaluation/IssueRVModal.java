@@ -3,7 +3,7 @@ package com.example.socialservicereportingandevaluation;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CourseRVModal implements Parcelable {
+public class IssueRVModal implements Parcelable {
     // creating variables for our different fields.
     private String name;
     private String issueDescription;
@@ -32,11 +32,11 @@ public class CourseRVModal implements Parcelable {
     }
 
     // creating an empty constructor.
-    public CourseRVModal() {
+    public IssueRVModal() {
 
     }
 
-    protected CourseRVModal(Parcel in) {
+    protected IssueRVModal(Parcel in) {
         name = in.readString();
         uid = in.readString();
         issueDescription = in.readString();
@@ -57,15 +57,15 @@ public class CourseRVModal implements Parcelable {
         village = in.readString();
     }
 
-    public static final Creator<CourseRVModal> CREATOR = new Creator<CourseRVModal>() {
+    public static final Creator<IssueRVModal> CREATOR = new Creator<IssueRVModal>() {
         @Override
-        public CourseRVModal createFromParcel(Parcel in) {
-            return new CourseRVModal(in);
+        public IssueRVModal createFromParcel(Parcel in) {
+            return new IssueRVModal(in);
         }
 
         @Override
-        public CourseRVModal[] newArray(int size) {
-            return new CourseRVModal[size];
+        public IssueRVModal[] newArray(int size) {
+            return new IssueRVModal[size];
         }
     };
 
@@ -147,11 +147,11 @@ public class CourseRVModal implements Parcelable {
         this.email = email;
     }
 
-    public CourseRVModal(String uid, String name, String courseDescription, String coursePrice,
-                         String bestSuitedFor, String courseImg, String courseLink, String subject,
-                         String priority, String source,
-                         String state1, String message, String openDate, String resolvedDate,
-                         String repoterMessage, String assign, String ta, String village) {
+    public IssueRVModal(String uid, String name, String courseDescription, String coursePrice,
+                        String bestSuitedFor, String courseImg, String courseLink, String subject,
+                        String priority, String source,
+                        String state1, String message, String openDate, String resolvedDate,
+                        String repoterMessage, String assign, String ta, String village) {
         this.name = name;
         this.uid = uid;
         this.issueDescription = courseDescription;

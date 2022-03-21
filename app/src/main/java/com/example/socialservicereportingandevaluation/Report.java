@@ -19,7 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class Report extends AppCompatActivity {
 
@@ -33,11 +37,15 @@ public class Report extends AppCompatActivity {
     private ProgressBar loadingPB;
     private String issueID, issueID1, source, state1;
     String[] sub = {"Child abuse", "Gender based violence","Child labor","Child marriages"};
+    String[] dist = {"Zomba", "Dedza", "Dowa", "Kasungu", "Lilongwe", "Nkhotakota", "Ntcheu",
+                    "Ntchisi", "Salima", "Chitipa", "Karonga", "Likoma", "Mzimba", "Rumphi",
+                    "Balaka", "Blantyre", "Chikwawa", "Chiradzulu", "Mulanje", "Machinga",
+                    "Mulanje", "Mwanza", "Nsanje", "Thyolo", "Phalombe", "Mangochi", "Neno"};
     String priority = "";
     String message = "Your issue will be handled soon";
     String assign = "reporter";
     String resolvedDate = "not yet";
-    String repoterMessage = "- ";
+    String repoterMessage = " ";
     String openDate = "";
     String ta, village = "";
 
@@ -47,6 +55,8 @@ public class Report extends AppCompatActivity {
 
     ArrayAdapter<String> adapterItems;
     ArrayAdapter<String> adapterItems1;
+     String dateO = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +67,7 @@ public class Report extends AppCompatActivity {
         NameEdt = findViewById(R.id.idEdtName);
         issueDescEdt = findViewById(R.id.idEdtCourseDescription);
         locationEdt = findViewById(R.id.idEdtIssueLocation);
-        contactEdt = findViewById(R.id.idEdtContact);
+//        contactEdt = findViewById(R.id.idEdtContact);
         emailEdt = findViewById(R.id.idEdtEmail);
         dateEdt = findViewById(R.id.idEdtDate);
         loadingPB = findViewById(R.id.idPBLoading);
@@ -65,13 +75,13 @@ public class Report extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line creating our database reference.
         autoCompleteTextView = findViewById(R.id.idSubject);
-//        autoCompleteTextView1 = findViewById(R.id.idPriority);
+        autoCompleteTextView1 = findViewById(R.id.idEdtContact);
 
         adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_item,sub);
-//        adapterItems1 = new ArrayAdapter<String>(this,R.layout.dropdown_item,prio);
+        adapterItems1 = new ArrayAdapter<String>(this,R.layout.dropdown_item,dist);
 
         autoCompleteTextView.setAdapter(adapterItems);
-//        autoCompleteTextView1.setAdapter(adapterItems1);
+        autoCompleteTextView1.setAdapter(adapterItems1);
 
         databaseReference = firebaseDatabase.getReference("issues");
         // adding click listener for our add course button.
@@ -86,10 +96,11 @@ public class Report extends AppCompatActivity {
                 String Name = NameEdt.getText().toString();
                 String issueDesc = issueDescEdt.getText().toString();
                 String location = locationEdt.getText().toString();
-                String contact = contactEdt.getText().toString();
+//                String contact = contactEdt.getText().toString();
                 String email = emailEdt.getText().toString();
                 String date = dateEdt.getText().toString();
                 String subject = autoCompleteTextView.getText().toString();
+                String contact = autoCompleteTextView1.getText().toString();
 //                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
                 source = "Mobile app";
@@ -101,16 +112,16 @@ public class Report extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int size = (int) dataSnapshot.getChildrenCount();
                         issueID = ""+size;
-                        CourseRVModal courseRVModal = new CourseRVModal(issueID, Name, issueDesc, location,
+                        IssueRVModal issueRVModal = new IssueRVModal(issueID, Name, issueDesc, location,
                                 contact, email, date, subject, priority, source, state1,
-                                message, openDate, resolvedDate, repoterMessage, assign, ta, village);
+                                message, dateO, resolvedDate, repoterMessage, assign, ta, village);
                         // on below line we are calling a add value event
                         // to pass data to firebase database.
                         databaseReference.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 // on below line we are setting data in our firebase database.
-                                databaseReference.child(issueID).setValue(courseRVModal);
+                                databaseReference.child(issueID).setValue(issueRVModal);
                                 // displaying a toast message.
                                 Toast.makeText(Report.this, "Issue Added..", Toast.LENGTH_SHORT).show();
                                 // starting a main activity.

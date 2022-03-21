@@ -30,7 +30,13 @@
                 android:padding="5dp"
                 android:textColor="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:helperText="Required!"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_person_outline_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtName"
@@ -39,6 +45,7 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textImeMultiLine|textMultiLine"
+                    android:maxLength="21"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="14sp"
@@ -57,7 +64,13 @@
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:counterEnabled="true"
+                app:counterMaxLength="9"
+                app:endIconMode="clear_text"
+                app:helperText="Required!"
+                app:hintTextColor="@color/black"
+                app:prefixText="+265"
+                app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtIssueLocation"
@@ -65,7 +78,8 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="phone"
+                    android:inputType="number"
+                    android:maxLength="10"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="14sp"
@@ -74,20 +88,79 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTILCourseSuitedFor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Enter District*"
+                android:padding="5dp"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/purple_200"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/idEdtContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp"
+                    app:boxStrokeColor="@color/purple_200" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idTITA"
                 style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter location"
+                android:hint="Enter T/A*"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:endIconMode="clear_text"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_add_location_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtContact"
+                    android:id="@+id/idEdtTA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="textImeMultiLine|textMultiLine"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp"
+                    app:boxStrokeColor="@color/purple_200" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idTIVillage"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Enter Village*"
+                android:padding="5dp"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/purple_200"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_add_location_alt_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/idEdtVillage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -108,11 +181,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter date"
+                android:hint="Enter date*"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:endIconMode="clear_text"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_date_range_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtEmail"
@@ -135,11 +210,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter email"
+                android:hint="Enter email*"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:endIconMode="clear_text"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_email_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtDate"
@@ -164,11 +241,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter subject"
+                android:hint="Enter subject*"
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_subject_24">
 
                 <AutoCompleteTextView
                     android:id="@+id/idSubject"
@@ -222,7 +300,9 @@
                 android:padding="5dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/purple_200"
-                app:hintTextColor="@color/black">
+                app:endIconMode="clear_text"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_description_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtCourseDescription"

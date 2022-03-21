@@ -8,48 +8,45 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHolder> {
+public class IssueRVAdapter extends RecyclerView.Adapter<IssueRVAdapter.ViewHolder> {
     // creating variables for our list, context, interface and position.
-    private ArrayList<CourseRVModal> courseRVModalArrayList;
+    private ArrayList<IssueRVModal> issueRVModalArrayList;
     private Context context;
     private CourseClickInterface courseClickInterface;
     int lastPos = -1;
 
     // creating a constructor.
-    public CourseRVAdapter(ArrayList<CourseRVModal> courseRVModalArrayList, Context context,
-                           CourseClickInterface courseClickInterface) {
-        this.courseRVModalArrayList = courseRVModalArrayList;
+    public IssueRVAdapter(ArrayList<IssueRVModal> issueRVModalArrayList, Context context,
+                          CourseClickInterface courseClickInterface) {
+        this.issueRVModalArrayList = issueRVModalArrayList;
         this.context = context;
         this.courseClickInterface = courseClickInterface;
     }
 
     @NonNull
     @Override
-    public CourseRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public IssueRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflating our layout file on below line.
-        View view = LayoutInflater.from(context).inflate(R.layout.course_rv_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.issue_rv_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CourseRVAdapter.ViewHolder holder,
+    public void onBindViewHolder(@NonNull IssueRVAdapter.ViewHolder holder,
                                  @SuppressLint("RecyclerView") int position) {
         // setting data to our recycler view item on below line.
-        CourseRVModal courseRVModal = courseRVModalArrayList.get(position);
-        holder.courseTV.setText(courseRVModal.getName());
-        holder.subjectIV.setText(courseRVModal.getSubject());
-        holder.coursePriceTV.setText(courseRVModal.getContact());
-        holder.state.setText(courseRVModal.getState1());
+        IssueRVModal issueRVModal = issueRVModalArrayList.get(position);
+        holder.courseTV.setText(issueRVModal.getName());
+        holder.subjectIV.setText(issueRVModal.getSubject());
+        holder.coursePriceTV.setText(issueRVModal.getContact());
+        holder.state.setText(issueRVModal.getState1());
 //        if (courseRVModal.getPriority()== null){
 //            holder.state.setText(courseRVModal.getState1());
 //        }
@@ -94,7 +91,7 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return courseRVModalArrayList.size();
+        return issueRVModalArrayList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -29,7 +29,7 @@ public class IssueDetails extends AppCompatActivity {
     TextView name, issueDesc, location, contact, email, date, subject, priority, source, message;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    CourseRVModal courseRVModal;
+    IssueRVModal issueRVModal;
     private ProgressBar loadingPB;
     // creating a string for our course id.
     String issueID;
@@ -55,22 +55,22 @@ public class IssueDetails extends AppCompatActivity {
         source = findViewById(R.id.idTVSource);
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line we are getting our modal class on which we have passed.
-        courseRVModal = getIntent().getParcelableExtra("issues");
+        issueRVModal = getIntent().getParcelableExtra("issues");
         Button deleteCourseBtn = findViewById(R.id.idBtnDeleteCourse);
 
-        if (courseRVModal != null) {
+        if (issueRVModal != null) {
             // on below line we are setting data to our edit text from our modal class.
-            name.setText("Name: "+courseRVModal.getName());
-            location.setText("Location: "+courseRVModal.getLocation());
-            contact.setText("Contact: "+courseRVModal.getContact());
-            email.setText("Email: "+courseRVModal.getEmail());
-            date.setText("Date: "+courseRVModal.getDate());
-            issueDesc.setText("Issue Description: "+courseRVModal.getIssueDescription());
-            subject.setText("Subject: "+courseRVModal.getSubject());
-            priority.setText("Priority: "+courseRVModal.getPriority());
-            source.setText("Source: "+courseRVModal.getSource());
-            message.setText("Remark: "+courseRVModal.getMessage());
-            issueID = courseRVModal.getUid();
+            name.setText("Name: "+ issueRVModal.getName());
+            location.setText("Location: "+ issueRVModal.getLocation());
+            contact.setText("Contact: "+ issueRVModal.getContact());
+            email.setText("Email: "+ issueRVModal.getEmail());
+            date.setText("Date: "+ issueRVModal.getDate());
+            issueDesc.setText("Issue Description: "+ issueRVModal.getIssueDescription());
+            subject.setText("Subject: "+ issueRVModal.getSubject());
+            priority.setText("Priority: "+ issueRVModal.getPriority());
+            source.setText("Source: "+ issueRVModal.getSource());
+            message.setText("Remark: "+ issueRVModal.getMessage());
+            issueID = issueRVModal.getUid();
 
 
         }
@@ -84,14 +84,14 @@ public class IssueDetails extends AppCompatActivity {
                 // on below line we are making our progress bar as visible.
 //                loadingPB.setVisibility(View.VISIBLE);
                 // on below line we are getting data from our edit text.
-                String name = courseRVModal.getName();
-                String issueDesc = courseRVModal.getIssueDescription();
-                String location = courseRVModal.getLocation();
-                String contact = courseRVModal.getContact();
-                String email = courseRVModal.getEmail();
+                String name = issueRVModal.getName();
+                String issueDesc = issueRVModal.getIssueDescription();
+                String location = issueRVModal.getLocation();
+                String contact = issueRVModal.getContact();
+                String email = issueRVModal.getEmail();
                 String message = ReplyEdt.getText().toString();
-                String date = courseRVModal.getDate();
-                String state1 = courseRVModal.getState1();
+                String date = issueRVModal.getDate();
+                String state1 = issueRVModal.getState1();
                 // on below line we are creating a map for
                 // passing a data using key and value pair.
                 Map<String, Object> map = new HashMap<>();
