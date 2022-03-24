@@ -138,7 +138,7 @@ public class Report extends AppCompatActivity {
                 String issueDesc = issueDescEdt.getText().toString();
                 String location = locationEdt.getText().toString();
 //                String contact = contactEdt.getText().toString();
-                String email = emailEdt.getText().toString();
+                String email = autoCompleteTextViewDate.getText().toString();
                 String date = dateEdt.getText().toString();
                 String subject = autoCompleteTextView.getText().toString();
                 String contact = autoCompleteTextView1.getText().toString();

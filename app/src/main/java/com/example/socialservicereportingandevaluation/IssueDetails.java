@@ -29,10 +29,11 @@ public class IssueDetails extends AppCompatActivity {
     TextView name, issueDesc, location, contact, email, date, subject, priority, source, message;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    TextInputEditText Reply;
     IssueRVModal issueRVModal;
     private ProgressBar loadingPB;
     // creating a string for our course id.
-    String issueID;
+    private String issueID, subject1, priority1, source1, state1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class IssueDetails extends AppCompatActivity {
         Button addIssueBtn = findViewById(R.id.idBtnAddIssue);
         ReplyEdt = findViewById(R.id.idEdtReply);
         Button addCourseBtn = findViewById(R.id.idBtnAddIssue);
+        Reply  = findViewById(R.id.idEdtReply);
         Button replyIssueBtn = findViewById(R.id.idBtnReplyIssue);
         name = findViewById(R.id.idTVName);
         issueDesc = (TextView)findViewById(R.id.idTVIssueDesc);
@@ -69,29 +71,29 @@ public class IssueDetails extends AppCompatActivity {
             subject.setText("Subject: "+ issueRVModal.getSubject());
             priority.setText("Priority: "+ issueRVModal.getPriority());
             source.setText("Source: "+ issueRVModal.getSource());
-            message.setText("Remark: "+ issueRVModal.getMessage());
+            message.setText("Remark: "+ issueRVModal.getRepoterMessage());
             issueID = issueRVModal.getUid();
+//             issueDesc1 = issueRVModal.getIssueDescription();
+//             location1 = issueRVModal.getLocation();
+//             contact1 = issueRVModal.getContact();
+//             email1 = issueRVModal.getEmail();
+//             date1 = issueRVModal.getDate();
+//             state1 = issueRVModal.getState1();
 
 
         }
 
         // on below line we are initialing our database reference and we are adding a child as our issue id.
         databaseReference = firebaseDatabase.getReference("issues").child(issueID);
-        // on below line we are adding click listener for our add course button.
+        // on below line we are adding click listener for our edit issue button.
         replyIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // on below line we are making our progress bar as visible.
 //                loadingPB.setVisibility(View.VISIBLE);
                 // on below line we are getting data from our edit text.
-                String name = issueRVModal.getName();
-                String issueDesc = issueRVModal.getIssueDescription();
-                String location = issueRVModal.getLocation();
-                String contact = issueRVModal.getContact();
-                String email = issueRVModal.getEmail();
-                String message = ReplyEdt.getText().toString();
-                String date = issueRVModal.getDate();
-                String state1 = issueRVModal.getState1();
+                String name = Reply.getText().toString();
+
                 // on below line we are creating a map for
                 // passing a data using key and value pair.
                 Map<String, Object> map = new HashMap<>();
@@ -106,7 +108,6 @@ public class IssueDetails extends AppCompatActivity {
                 map.put("source", source);
                 map.put("priority", priority);
                 map.put("state1", state1);
-                map.put("message", message);
 
                 // on below line we are calling a database reference on
                 // add value event listener and on data change method
@@ -119,7 +120,7 @@ public class IssueDetails extends AppCompatActivity {
                         // adding a map to our database.
 //                        databaseReference.updateChildren(map);
                         // on below line we are displaying a toast message.
-//                        Toast.makeText(EditCourseActivity.this, "Issue Updated..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(IssueDetails.this, "Issue Updated..", Toast.LENGTH_SHORT).show();
                         // opening a new activity after updating our issue.
 
                         startActivity(new Intent(IssueDetails.this, Home.class));
