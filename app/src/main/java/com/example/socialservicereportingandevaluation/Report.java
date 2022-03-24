@@ -25,7 +25,19 @@ import java.util.Date;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
+import android.app.DatePickerDialog;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+
+import java.util.Calendar;
+
 public class Report extends AppCompatActivity {
+    EditText date;
+    DatePickerDialog datePickerDialog;
 
     // creating variables for our button, edit text,
     // firebase database, database reference, progress bar.
@@ -35,7 +47,7 @@ public class Report extends AppCompatActivity {
     DatabaseReference databaseReference;
     private Button state;
     private ProgressBar loadingPB;
-    private String issueID, issueID1, source, state1;
+    private String issueID, issueID1, source;
     String[] sub = {"Child abuse", "Gender based violence","Child labor","Child marriages"};
     String[] dist = {"Zomba", "Dedza", "Dowa", "Kasungu", "Lilongwe", "Nkhotakota", "Ntcheu",
                     "Ntchisi", "Salima", "Chitipa", "Karonga", "Likoma", "Mzimba", "Rumphi",
@@ -48,10 +60,12 @@ public class Report extends AppCompatActivity {
     String repoterMessage = " ";
     String openDate = "";
     String ta, village = "";
+    String state1 = "pending";
 
 
     AutoCompleteTextView autoCompleteTextView;
     AutoCompleteTextView autoCompleteTextView1;
+    AutoCompleteTextView autoCompleteTextViewDate;
 
     ArrayAdapter<String> adapterItems;
     ArrayAdapter<String> adapterItems1;
@@ -66,9 +80,9 @@ public class Report extends AppCompatActivity {
         addIssueBtn = findViewById(R.id.idBtnAddIssue);
         NameEdt = findViewById(R.id.idEdtName);
         issueDescEdt = findViewById(R.id.idEdtCourseDescription);
+
         locationEdt = findViewById(R.id.idEdtIssueLocation);
 //        contactEdt = findViewById(R.id.idEdtContact);
-        emailEdt = findViewById(R.id.idEdtEmail);
         dateEdt = findViewById(R.id.idEdtDate);
         loadingPB = findViewById(R.id.idPBLoading);
         state= (Button) findViewById(R.id.pending);
@@ -76,6 +90,8 @@ public class Report extends AppCompatActivity {
         // on below line creating our database reference.
         autoCompleteTextView = findViewById(R.id.idSubject);
         autoCompleteTextView1 = findViewById(R.id.idEdtContact);
+        autoCompleteTextViewDate = findViewById(R.id.idEdtEmail);
+
 
         adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_item,sub);
         adapterItems1 = new ArrayAdapter<String>(this,R.layout.dropdown_item,dist);
@@ -87,6 +103,31 @@ public class Report extends AppCompatActivity {
         // adding click listener for our add course button.
 
 //        addIssueBtn.setText("Open");
+
+        autoCompleteTextViewDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(Report.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                autoCompleteTextViewDate.setText((monthOfYear + 1) + "/"
+                                        +  dayOfMonth + "/" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
 
         addIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +145,6 @@ public class Report extends AppCompatActivity {
 //                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
                 source = "Mobile app";
-                state1 = "pending";
 
                 DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
                 mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {

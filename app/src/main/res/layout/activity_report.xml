@@ -8,6 +8,7 @@
     android:background="@color/black_shade_1"
     tools:context=".Report">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/Name"
@@ -189,13 +189,14 @@
                 app:hintTextColor="@color/black"
                 app:startIconDrawable="@drawable/ic_baseline_date_range_24">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+                <AutoCompleteTextView
                     android:id="@+id/idEdtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="date"
+                    android:inputType="none"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="14sp"
