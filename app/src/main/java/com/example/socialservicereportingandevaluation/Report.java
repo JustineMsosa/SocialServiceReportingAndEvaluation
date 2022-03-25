@@ -1,6 +1,10 @@
 package com.example.socialservicereportingandevaluation;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
@@ -120,8 +126,8 @@ public class Report extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                autoCompleteTextViewDate.setText((monthOfYear + 1) + "/"
-                                        +  dayOfMonth + "/" + year);
+                                autoCompleteTextViewDate.setText((dayOfMonth  + 1) + "/"
+                                        +  monthOfYear + "/" + year);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -145,6 +151,7 @@ public class Report extends AppCompatActivity {
 //                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
                 source = "Mobile app";
+                createNotificationChannel();
 
                 DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
                 mDatabaseRef.child("issues").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -189,4 +196,38 @@ public class Report extends AppCompatActivity {
             }
         });
     }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("id", "n", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        Intent snoozeIntent = new Intent(this, IssueDetails.class);
+        snoozeIntent.setAction("ACTION_SNOOZE");
+        snoozeIntent.putExtra("EXTRA_NOTIFICATION_ID", 0);
+        PendingIntent snoozePendingIntent =
+                PendingIntent.getBroadcast(this, 0, snoozeIntent, 0);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+                    .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                    .setContentTitle("Issue has been reported")
+                    .setContentText("You have reported an issue to YONECO and it will be handle soon ")
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                            .bigText("You have reported an issue to YONECO and it will be handle soon."))
+                    .addAction(R.drawable.ic_baseline_notifications_24, "SNOOZE", snoozePendingIntent)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(999, builder.build());
+
+
+
+
+        }
+
 }
