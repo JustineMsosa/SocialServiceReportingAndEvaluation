@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -135,6 +137,30 @@ public class Report extends AppCompatActivity {
             }
         });
 
+
+        locationEdt.addTextChangedListener(new TextWatcher(){
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(locationEdt.length()!=9){
+                    locationEdt.setError("Provide 9 characters");
+                    return;
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         addIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,7 +168,7 @@ public class Report extends AppCompatActivity {
                 // getting data from our edit text.
                 String Name = NameEdt.getText().toString();
                 String issueDesc = issueDescEdt.getText().toString();
-                String location = locationEdt.getText().toString();
+                String location = ("+265"+locationEdt.getText().toString());
 //                String contact = contactEdt.getText().toString();
                 String email = autoCompleteTextViewDate.getText().toString();
                 String date = dateEdt.getText().toString();
