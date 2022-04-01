@@ -33,7 +33,8 @@ public class IssueDetails extends AppCompatActivity {
     IssueRVModal issueRVModal;
     private ProgressBar loadingPB;
     // creating a string for our course id.
-    private String issueID, subject1, priority1, source1, state1;
+    private String issueID, subject1, priority1, source1, name1,
+    issueDesc1, location1, contact1, email1, date1, state11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,15 +72,19 @@ public class IssueDetails extends AppCompatActivity {
             subject.setText("Subject: "+ issueRVModal.getSubject());
             priority.setText("Priority: "+ issueRVModal.getPriority());
             source.setText("Source: "+ issueRVModal.getSource());
-            message.setText("Remark33: "+ issueRVModal.getRepoterMessage());
+            message.setText("Remark: "+ issueRVModal.getMessage());
             issueID = issueRVModal.getUid();
 
-//             issueDesc1 = issueRVModal.getIssueDescription();
-//             location1 = issueRVModal.getLocation();
-//             contact1 = issueRVModal.getContact();
-//             email1 = issueRVModal.getEmail();
-//             date1 = issueRVModal.getDate();
-//             state1 = issueRVModal.getState1();
+            issueDesc1 = issueRVModal.getIssueDescription();
+            location1 = issueRVModal.getLocation();
+            contact1 = issueRVModal.getContact();
+            email1 = issueRVModal.getEmail();
+            date1 = issueRVModal.getDate();
+            state11 = issueRVModal.getState1();
+            priority1 = issueRVModal.getPriority();
+            source1 = issueRVModal.getSource();
+            subject1 = issueRVModal.getSubject();
+            name1 = issueRVModal.getName();
 
 
         }
@@ -93,22 +98,23 @@ public class IssueDetails extends AppCompatActivity {
                 // on below line we are making our progress bar as visible.
 //                loadingPB.setVisibility(View.VISIBLE);
                 // on below line we are getting data from our edit text.
-                String name = Reply.getText().toString();
+                String reply = Reply.getText().toString();
 
                 // on below line we are creating a map for
                 // passing a data using key and value pair.
                 Map<String, Object> map = new HashMap<>();
-                map.put("name", name);
-                map.put("issueDescription", issueDesc);
-                map.put("location", location);
-                map.put("contact", contact);
-                map.put("email", email);
-                map.put("date", date);
+                map.put("name", name1);
+                map.put("issueDescription", issueDesc1);
+                map.put("location", location1);
+                map.put("contact", contact1);
+                map.put("email", email1);
+                map.put("date", date1);
                 map.put("issueId", issueID);
-                map.put("subject", subject);
-                map.put("source", source);
-                map.put("priority", priority);
-                map.put("state1", state1);
+                map.put("subject", subject1);
+                map.put("source", source1);
+                map.put("priority", priority1);
+                map.put("state1", state11);
+                map.put("repoterMessage", reply);
 
                 // on below line we are calling a database reference on
                 // add value event listener and on data change method
@@ -118,13 +124,14 @@ public class IssueDetails extends AppCompatActivity {
 
                         // making progress bar visibility as gone.
 //                        loadingPB.setVisibility(View.GONE);
-                        // adding a map to our database.
-//                        databaseReference.updateChildren(map);
+//                         adding a map to our database.
+                        databaseReference.updateChildren(map);
                         // on below line we are displaying a toast message.
-                        Toast.makeText(IssueDetails.this, "Issue Updated..", Toast.LENGTH_SHORT).show();
+                        Reply.setText("");
+                        Toast.makeText(IssueDetails.this, "Responded..", Toast.LENGTH_SHORT).show();
                         // opening a new activity after updating our issue.
 
-                        startActivity(new Intent(IssueDetails.this, Home.class));
+//                        startActivity(new Intent(IssueDetails.this, Home.class));
                     }
 
                     @Override

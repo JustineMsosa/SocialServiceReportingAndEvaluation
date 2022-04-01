@@ -71,7 +71,7 @@ public class Report extends AppCompatActivity {
     String openDate = "";
     String ta, village = "";
     String state1 = "pending";
-    String repoterMessage = "Repoter Message";
+    String repoterMessage = " ";
 
 
     AutoCompleteTextView autoCompleteTextView;
