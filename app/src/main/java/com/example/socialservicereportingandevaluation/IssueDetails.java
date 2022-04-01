@@ -71,8 +71,9 @@ public class IssueDetails extends AppCompatActivity {
             subject.setText("Subject: "+ issueRVModal.getSubject());
             priority.setText("Priority: "+ issueRVModal.getPriority());
             source.setText("Source: "+ issueRVModal.getSource());
-            message.setText("Remark: "+ issueRVModal.getRepoterMessage());
+            message.setText("Remark33: "+ issueRVModal.getRepoterMessage());
             issueID = issueRVModal.getUid();
+
 //             issueDesc1 = issueRVModal.getIssueDescription();
 //             location1 = issueRVModal.getLocation();
 //             contact1 = issueRVModal.getContact();

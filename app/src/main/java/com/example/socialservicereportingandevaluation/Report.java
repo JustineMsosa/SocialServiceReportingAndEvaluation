@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -41,6 +42,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
 
 public class Report extends AppCompatActivity {
@@ -65,10 +68,10 @@ public class Report extends AppCompatActivity {
     String message = "Your issue will be handled soon";
     String assign = "reporter";
     String resolvedDate = "not yet";
-    String repoterMessage = " ";
     String openDate = "";
     String ta, village = "";
     String state1 = "pending";
+    String repoterMessage = "Repoter Message";
 
 
     AutoCompleteTextView autoCompleteTextView;
@@ -149,7 +152,34 @@ public class Report extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(locationEdt.length()!=9){
-                    locationEdt.setError("Provide 9 characters");
+                    locationEdt.setError("Provide 9 digits");
+                    return;
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        dateEdt.addTextChangedListener(new TextWatcher(){
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+                if (dateEdt.getText().toString().trim().contains("@")){
+                    return;
+                }
+                else {
+                    dateEdt.setError("please include '@' in the email address.  "+dateEdt.getText().toString()+" is missing an '@'");
                     return;
                 }
 
@@ -164,11 +194,12 @@ public class Report extends AppCompatActivity {
         addIssueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingPB.setVisibility(View.VISIBLE);
+
                 // getting data from our edit text.
                 String Name = NameEdt.getText().toString();
                 String issueDesc = issueDescEdt.getText().toString();
                 String location = ("+265"+locationEdt.getText().toString());
+                String cont = locationEdt.getText().toString().trim();
 //                String contact = contactEdt.getText().toString();
                 String email = autoCompleteTextViewDate.getText().toString();
                 String date = dateEdt.getText().toString();
@@ -177,6 +208,28 @@ public class Report extends AppCompatActivity {
 //                String priority = autoCompleteTextView1.getText().toString();
                 String cdate = new Date().toString();
                 source = "Mobile app";
+
+                if (TextUtils.isEmpty(Name)){
+                    NameEdt.setError("Name is required");
+                }
+                else if (TextUtils.isEmpty(issueDesc)){
+                    issueDescEdt.setError("Issue description is required");
+                }
+                else if (TextUtils.isEmpty(cont)){
+                    locationEdt.setError("Contact is required");
+                }
+                else if (TextUtils.isEmpty(email)){
+                    autoCompleteTextViewDate.setError("date is required");
+                }
+                else if (TextUtils.isEmpty(subject)){
+                    autoCompleteTextView.setError("subject is required");
+                }
+                else if (TextUtils.isEmpty(contact)){
+                    autoCompleteTextView1.setError("Contact is required");
+                }
+                else{
+
+                    loadingPB.setVisibility(View.VISIBLE);
                 createNotificationChannel();
 
                 DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
@@ -185,6 +238,7 @@ public class Report extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int size = (int) dataSnapshot.getChildrenCount();
                         issueID = ""+size;
+
                         IssueRVModal issueRVModal = new IssueRVModal(issueID, Name, issueDesc, location,
                                 contact, email, date, subject, priority, source, state1,
                                 message, dateO, resolvedDate, repoterMessage, assign, ta, village);
@@ -219,7 +273,7 @@ public class Report extends AppCompatActivity {
                 // on below line we are passing all data to our modal class.
 
 
-            }
+            }}
         });
     }
 
