@@ -1,3 +1,4 @@
+
 package com.example.socialservicereportingandevaluation;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,7 @@ public class IssueDetails extends AppCompatActivity {
     // database reference, course rv modal,progress bar.
     private Button replyIssueBtn;
     private TextInputEditText ReplyEdt;
-    TextView name, issueDesc, location, contact, email, date, subject, priority, source, message;
+    TextView name, issueDesc, location, contact, replyMessage1, email, date, subject, priority, source, message;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     TextInputEditText Reply;
@@ -34,7 +35,7 @@ public class IssueDetails extends AppCompatActivity {
     private ProgressBar loadingPB;
     // creating a string for our course id.
     private String issueID, subject1, priority1, source1, name1,
-    issueDesc1, location1, contact1, email1, date1, state11;
+    issueDesc1, location1, contact1, email1, date1, state11, numberDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +55,13 @@ public class IssueDetails extends AppCompatActivity {
         loadingPB = findViewById(R.id.idPBLoading);
         subject = findViewById(R.id.idTVSubject);
         priority = findViewById(R.id.idTVPriority);
+        replyMessage1 = (TextView)findViewById(R.id.idTVYourMessage);
         message = findViewById(R.id.idTVMessage);
         source = findViewById(R.id.idTVSource);
         firebaseDatabase = FirebaseDatabase.getInstance();
         // on below line we are getting our modal class on which we have passed.
         issueRVModal = getIntent().getParcelableExtra("issues");
-        Button deleteCourseBtn = findViewById(R.id.idBtnDeleteCourse);
+        String reply = Reply.getText().toString();
 
         if (issueRVModal != null) {
             // on below line we are setting data to our edit text from our modal class.
@@ -72,7 +74,7 @@ public class IssueDetails extends AppCompatActivity {
             subject.setText("Subject: "+ issueRVModal.getSubject());
             priority.setText("Priority: "+ issueRVModal.getPriority());
             source.setText("Source: "+ issueRVModal.getSource());
-            message.setText("Remark: "+ issueRVModal.getMessage());
+            message.setText(issueRVModal.getMessage());
             issueID = issueRVModal.getUid();
 
             issueDesc1 = issueRVModal.getIssueDescription();
@@ -98,7 +100,7 @@ public class IssueDetails extends AppCompatActivity {
                 // on below line we are making our progress bar as visible.
 //                loadingPB.setVisibility(View.VISIBLE);
                 // on below line we are getting data from our edit text.
-                String reply = Reply.getText().toString();
+
 
                 // on below line we are creating a map for
                 // passing a data using key and value pair.
@@ -114,8 +116,8 @@ public class IssueDetails extends AppCompatActivity {
                 map.put("source", source1);
                 map.put("priority", priority1);
                 map.put("state1", state11);
-                map.put("repoterMessage", reply);
-
+                map.put("repoterMessage", "  | Victim Message: "+Reply.getText().toString());
+                replyMessage1.setText("Your Message : "+Reply.getText().toString());
                 // on below line we are calling a database reference on
                 // add value event listener and on data change method
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

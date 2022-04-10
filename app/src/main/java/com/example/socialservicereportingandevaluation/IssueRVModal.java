@@ -25,6 +25,7 @@ public class IssueRVModal implements Parcelable {
     private String village;
 
 
+
     public String getUid(){return uid;}
 
     public void setUid(String uid) {
@@ -72,6 +73,7 @@ public class IssueRVModal implements Parcelable {
     // creating getter and setter methods.
     public String getRepoterMessage(){return repoterMessage; }
     public void setRepoterMessage(String reporterMessage) {this.repoterMessage = repoterMessage; }
+
 
     public String getTa(){return ta; }
     public void setTa(String ta) {this.ta = ta; }
@@ -170,6 +172,7 @@ public class IssueRVModal implements Parcelable {
         this.assign = assign;
         this.ta = ta;
         this.village = village;
+
     }
 
     @Override
@@ -197,6 +200,7 @@ public class IssueRVModal implements Parcelable {
         dest.writeString(assign);
         dest.writeString(ta);
         dest.writeString(village);
+
 
     }
 }

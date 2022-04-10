@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">-->
+<!--        <item name="colorAccent">@color/black_shade_2</item>-->
+<!--    </style>-->
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/black_shade_2</item>
+        <item name="android:colorAccent">@color/black_shade_2</item>
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+
+        <item name="android:colorPrimary">@color/black_shade_2</item>
+        <item name="android:colorPrimaryDark">@color/black_shade_2</item>
+
+    </style>
+
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/black_shade_2</item>
+    </style>
+
+
+</resources>

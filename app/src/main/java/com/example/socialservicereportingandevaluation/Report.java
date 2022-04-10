@@ -4,6 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -65,13 +66,14 @@ public class Report extends AppCompatActivity {
                     "Balaka", "Blantyre", "Chikwawa", "Chiradzulu", "Mulanje", "Machinga",
                     "Mulanje", "Mwanza", "Nsanje", "Thyolo", "Phalombe", "Mangochi", "Neno"};
     String priority = "";
-    String message = "Your issue will be handled soon";
+    String message = "Remark: Your issue will be handled soon";
     String assign = "reporter";
     String resolvedDate = "not yet";
     String openDate = "";
     String ta, village = "";
     String state1 = "pending";
     String repoterMessage = " ";
+    String numberDays = "";
 
 
     AutoCompleteTextView autoCompleteTextView;
@@ -124,19 +126,21 @@ public class Report extends AppCompatActivity {
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
                 // date picker dialog
-                datePickerDialog = new DatePickerDialog(Report.this,
+                datePickerDialog = new DatePickerDialog(Report.this, R.style.DialogTheme,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                autoCompleteTextViewDate.setText((dayOfMonth  + 1) + "/"
-                                        +  monthOfYear + "/" + year);
+                                autoCompleteTextViewDate.setText( (dayOfMonth  + 1) + "/"
+                                        + monthOfYear  + "/" + year);
 
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#563e7c"));
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#563e7c"));
             }
         });
 
@@ -284,6 +288,7 @@ public class Report extends AppCompatActivity {
             NotificationChannel channel = new NotificationChannel("id", "n", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
+
         }
 
         Intent snoozeIntent = new Intent(this, IssueDetails.class);
