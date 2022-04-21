@@ -67,7 +67,7 @@ public class Report extends AppCompatActivity {
                     "Mulanje", "Mwanza", "Nsanje", "Thyolo", "Phalombe", "Mangochi", "Neno"};
     String priority = "";
     String message = "Remark: Your issue will be handled soon";
-    String assign = "reporter";
+    String assign = "Admini";
     String resolvedDate = "not yet";
     String openDate = "";
     String ta, village = "";
