@@ -116,7 +116,7 @@ public class IssueDetails extends AppCompatActivity {
                 map.put("source", source1);
                 map.put("priority", priority1);
                 map.put("state1", state11);
-                map.put("repoterMessage", "  | Victim Message: "+Reply.getText().toString());
+                map.put("repoterMessage", "  | Victim's Message: "+Reply.getText().toString());
                 replyMessage1.setText("Your Message : "+Reply.getText().toString());
                 // on below line we are calling a database reference on
                 // add value event listener and on data change method
