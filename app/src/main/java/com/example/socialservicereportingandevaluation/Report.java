@@ -82,7 +82,7 @@ public class Report extends AppCompatActivity {
 
     ArrayAdapter<String> adapterItems;
     ArrayAdapter<String> adapterItems1;
-     String dateO = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+     String dateO = new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime());
 
 
     @Override
